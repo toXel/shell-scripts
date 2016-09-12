@@ -37,4 +37,5 @@ fi
 for file in "${WATCH_PATH}/*.wav"
 do
   ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${file}.mp3"
+  mv "${file}" "${WATCH_PATH}/original/"
 done
