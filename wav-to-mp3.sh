@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+# Path that should be checked for wav files (without trailing slash!)
 WATCH_PATH='/home/timo/Music'
-
+QUALITY=5
 # +----------------------------------------+
 # |          Choose Quality (VBR)          |
 # +----------------------------------------+
@@ -27,7 +28,6 @@ WATCH_PATH='/home/timo/Music'
 # +---------+--------------+---------------+
 # |    9    |      65      |     45-85     |
 # +---------+--------------+---------------+
-QUALITY=5
 
 # Create original dir if it's not already there
 if [ ! -d "${WATCH_PATH}/original" ]
