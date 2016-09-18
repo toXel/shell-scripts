@@ -29,7 +29,8 @@ WATCH_PATH='/home/timo/Music'
 # +---------+--------------+---------------+
 QUALITY=5
 
-if !test -d "${WATCH_PATH}/original"
+# Create original dir if it's not already there
+if [ ! -d "${WATCH_PATH}/original" ]
 then
   mkdir "${WATCH_PATH}/original"
 fi
