@@ -39,6 +39,7 @@ for file in $WATCH_PATH/*.wav
 do
   filename=$(basename "${file}")
   filename=${filename%.*}
-  ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${WATCH_PATH}/${filename}.mp3"
+  ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${WATCH_PATH}/IN_PROGRESS.mp3"
+  mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${WATCH_PATH}/${filename}.mp3"
   mv "${file}" "${WATCH_PATH}/original/"
 done
