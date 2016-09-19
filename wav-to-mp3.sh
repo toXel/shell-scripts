@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Path that should be checked for wav files (without trailing slash!)
 WATCH_PATH='/home/timo/Music'
