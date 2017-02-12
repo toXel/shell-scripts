@@ -5,6 +5,9 @@ cd /home/$USER/
 echo "Download new gogs version..."
 wget "https://dl.gogs.io/gogs_latest_linux_amd64.tar.gz" -O gogs_current.tar.gz
 
+echo "Stopping gogs service..."
+svc -d service/gogs
+
 echo "Remove old gogs-backup..."
 rm -r gogs-backup
 
