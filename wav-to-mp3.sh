@@ -29,10 +29,10 @@ QUALITY=5
 # |    9    |      65      |     45-85     |
 # +---------+--------------+---------------+
 
-# Create original dir if it's not already there
-if [ ! -d "${WATCH_PATH}/original" ]
+# Create MP3 dir if it's not already there
+if [ ! -d "${WATCH_PATH}/MP3" ]
 then
-  mkdir "${WATCH_PATH}/original"
+  mkdir "${WATCH_PATH}/MP3"
 fi
 
 for file in $WATCH_PATH/*.wav
@@ -40,6 +40,5 @@ do
   filename=$(basename "${file}")
   filename=${filename%.*}
   ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${WATCH_PATH}/IN_PROGRESS.mp3"
-  mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${WATCH_PATH}/${filename}.mp3"
-  mv "${file}" "${WATCH_PATH}/original/"
+  mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${WATCH_PATH}/MP3/${filename}.mp3"
 done
