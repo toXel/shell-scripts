@@ -35,10 +35,17 @@ then
   mkdir "${WATCH_PATH}/MP3"
 fi
 
+# Create WAV dir if it's not already there
+if [ ! -d "${WATCH_PATH}/WAV" ]
+then
+  mkdir "${WATCH_PATH}/WAV"
+fi
+
 for file in $WATCH_PATH/*.wav
 do
   filename=$(basename "${file}")
   filename=${filename%.*}
   ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${WATCH_PATH}/IN_PROGRESS.mp3"
   mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${WATCH_PATH}/MP3/${filename}.mp3"
+  mv "${file}" "${WATCH_PATH}/WAV/"
 done
