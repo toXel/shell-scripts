@@ -41,7 +41,7 @@ then
   mkdir "${WATCH_PATH}/WAV"
 fi
 
-for file in $WATCH_PATH/*.wav
+for file in $WATCH_PATH/*.{wav,aifc}
 do
   filename=$(basename "${file}")
   filename=${filename%.*}
