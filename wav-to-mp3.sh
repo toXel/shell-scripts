@@ -29,16 +29,20 @@ QUALITY=5
 # |    9    |      65      |     45-85     |
 # +---------+--------------+---------------+
 
+currentYear=`date '+%Y'`
+mp3Dir="${WATCH_PATH}/MP3/${currentYear}"
+wavDir="${WATCH_PATH}/WAV ${currentYear}"
+
 # Create MP3 dir if it's not already there
-if [ ! -d "${WATCH_PATH}/MP3" ]
+if [ ! -d "${mp3Dir}" ]
 then
-  mkdir "${WATCH_PATH}/MP3"
+  mkdir -p "${mp3Dir}"
 fi
 
 # Create WAV dir if it's not already there
-if [ ! -d "${WATCH_PATH}/WAV" ]
+if [ ! -d "${wavDir}" ]
 then
-  mkdir "${WATCH_PATH}/WAV"
+  mkdir -p "${wavDir}"
 fi
 
 for file in $WATCH_PATH/*.{wav,aifc}
@@ -46,6 +50,6 @@ do
   filename=$(basename "${file}")
   filename=${filename%.*}
   ffmpeg -i "${file}" -acodec libmp3lame -aq $QUALITY "${WATCH_PATH}/IN_PROGRESS.mp3"
-  mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${WATCH_PATH}/MP3/${filename}.mp3"
-  mv "${file}" "${WATCH_PATH}/WAV/"
+  mv "${WATCH_PATH}/IN_PROGRESS.mp3" "${mp3Dir}/${filename}.mp3"
+  mv "${file}" "${wavDir}/"
 done
